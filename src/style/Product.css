@@ -1,0 +1,58 @@
+#aside{
+    margin-left: 70px;
+    box-shadow: 3px 3px 10px black;
+    width: 200px;
+    height: 500px;
+        
+}
+#aside-container{
+    margin-left: 50px;
+    width: 200px;
+
+}
+ #main-container{
+    display: flex;
+    gap: 0px;
+}
+#section{
+    margin-left: 100px;
+
+}
+#card{
+    height: 250px;
+    width: 250px;
+    box-shadow: 3px 3px 10px black;
+}
+#image-container{
+   
+    height: 155px;
+    width: 100%;
+    text-align: center;
+    background-color: rgb(178, 173, 173);
+}
+#img-item{
+    height: 100%;
+}
+#price-container{
+    display: flex;
+    position: relative;
+}
+#btn{
+    height: 35px;
+    width: 120px;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    background-color: black;
+    color: aliceblue;
+    font-weight: bold;
+}
+
+#section{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 70px;
+}
+#brand{
+    margin-top: -5px;
+} 
