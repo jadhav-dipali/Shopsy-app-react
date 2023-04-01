@@ -1,0 +1,33 @@
+#top-nav{
+    height: 90px;
+    width: 100%;
+    background-color: grey;
+}
+#nav-container{
+    display: flex;
+    align-content: center;
+    position: relative;
+
+}
+#logo{
+    height: 40px;
+    border-radius: 13px;
+    position: absolute;
+    right: 90px;
+    top: 30px;
+}
+#pro{
+    position: absolute;
+    right: 170px;
+    top: 10px;
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 20px;
+}
+#title{
+    position: absolute;
+    left: 90px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: aliceblue;
+}
