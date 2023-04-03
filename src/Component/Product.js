@@ -1,9 +1,10 @@
- import React, { useEffect, useState } from "react"
+ import React, { useContext, useEffect, useState } from "react"
  import TopNav from "./TopNav"
  import "../style/Product.css"
+ import{NotiContext} from "../Context/ContextProduct"
  
  
- export default function Product({addData, setAddData}){
+ export default function Product(){
     let [shopData, setShopData]=useState([]);
     let [filterData , setFilterData] = useState(null);
     useEffect(()=>{
@@ -30,24 +31,36 @@
  function priceFilter(e){
 
     let [min , max] = e.target.id.split("-").map(Number);
-    const priceless= shopData.filter(m=>m.price>=min&&m.price<=max);
+
+    const priceless= shopData.filter(m=> m.price>=min && m.price<=max);
     const pricemid=shopData.filter(m=>m.price>=min&&m.price<=max)
     const priceheigh=shopData.filter(m=>m.price>=min)
         if(priceless){
         setFilterData(priceless)
         }if(pricemid){
-            setFilterData(pricemid) 
-        }if(priceheigh){
-            setFilterData(priceheigh) 
+            setFilterData(pricemid)
         }
-    
-
+        if(priceheigh){
+            setFilterData(priceheigh)
+        }
  }
 
+const {num,setNum,addProduct,setAddProduct}= useContext(NotiContext);
+// const num =useContext(NotiContext);
+
+ function AddToCard(id){
+    setNum(num+1)
+   let ans= shopData.find(e=>e.id===id);
+   setAddProduct(d=>[...d,ans]);
+
+      
+ }
+ 
+
     return <>
-    <TopNav/>
     <div id="main-container">
         <aside id="aside">
+            
             <div id="aside-container">
             <h4 className="data-product">Color</h4>
             <input type="checkbox" onClick={redFunction} id="Red"></input><label>red</label><br/>
@@ -72,11 +85,8 @@
         </aside>
         <div id="section">
           
-        {filterData? filterData.length===0? "No Result Found" : filterData.map(data=>{
-
-            console.log(data)
-            return <>
-                 <div id="card">
+        {filterData? filterData.length===0? "No Result Found" : filterData.map((data,i)=>{
+            return <div id="card" key={i}>
             
             <h4 id="brand">{data.name}</h4>
          
@@ -85,14 +95,13 @@
             </div>
             <div id="price-container">
                 <h3>{`RS ${data.price}`}</h3>
-                <button id="btn" >Add To Card</button>
+                <button id="btn" onClick={AddToCard}>Add To Card</button>
             </div>
         
         </div>
-            </>
-        }):shopData.map(data=>{
-            return <>
-                 <div id="card">
+        
+        }):shopData.map((data , i)=>{
+            return <div id="card" key={i}>
             
             <h4 id="brand">{data.name}</h4>
          
@@ -101,11 +110,10 @@
             </div>
             <div id="price-container">
                 <h3>{`RS ${data.price}`}</h3>
-                <button id="btn" >Add To Card</button>
+                <button id="btn" onClick={()=>AddToCard(data.id)} >Add To Card</button>
             </div>
         
         </div>
-            </>
         })
         
         } 
