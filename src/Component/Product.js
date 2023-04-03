@@ -6,6 +6,7 @@
  
  export default function Product(){
     let [shopData, setShopData]=useState([]);
+    let [search ,setSearch] = useState("")
     let [filterData , setFilterData] = useState(null);
     useEffect(()=>{
      fetch("https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json")
@@ -55,9 +56,23 @@ const {num,setNum,addProduct,setAddProduct}= useContext(NotiContext);
 
       
  }
+
+
+ function Search(){
+    
+   const search_regex= shopData.filter(e=>new RegExp(e.name.slice(0,4), 'i').test(search));
+   console.log(search)
+   setFilterData(search_regex)
+   setSearch("")
+ }
  
 
     return <>
+    <div id="search-container">
+    <input type="text" placeholder="Search by Name..."  id="search-input-feild" onChange={(e)=>{setSearch(e.target.value)}} value={search}/>
+    <img src="https://cdn.icon-icons.com/icons2/3392/PNG/512/small_search_icon_213735.png" id="search-icon" onClick={Search} />
+    </div>
+   
     <div id="main-container">
         <aside id="aside">
             

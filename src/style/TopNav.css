@@ -47,3 +47,21 @@
     justify-content: center;
     align-items: center;
 }
+
+
+/* @media only screen and (min-width:550px) {
+ #top-nav{
+    height: 90px;
+    width: 100%;
+   
+}
+#logo{
+    
+    height: 40px;
+    border-radius: 13px;
+    position: absolute;
+    right: 90px;
+    top: 30px;
+}
+
+ }    */
