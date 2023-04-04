@@ -110,7 +110,7 @@ const {num,setNum,addProduct,setAddProduct}= useContext(NotiContext);
             </div>
             <div id="price-container">
                 <h3>{`RS ${data.price}`}</h3>
-                <button id="btn" onClick={AddToCard}>Add To Card</button>
+                <button id="btn" onClick={()=>AddToCard(data.id)}>Add To Card</button>
             </div>
         
         </div>
